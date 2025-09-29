@@ -1,5 +1,12 @@
+import Layout from "./components/Layout";
+import AppRouter from "./router/AppRouter";
+
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello World!</h1>;
+  return (
+    <Layout>
+      <AppRouter />
+    </Layout>
+  );
 }
 
 export default App;
