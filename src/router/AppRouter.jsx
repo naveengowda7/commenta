@@ -25,7 +25,7 @@ const LoadingFallback = () => (
 );
 
 const AppRouter = () => {
-  const { isAuthenticated } = { isAuthenticated: true };
+  const { isAuthenticated } = { isAuthenticated: false };
 
   return (
     <Suspense fallback={<LoadingFallback />}>
