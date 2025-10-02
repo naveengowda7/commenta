@@ -1,0 +1,169 @@
+/* Header.css */
+.app-header {
+  background: white;
+  border-bottom: 1px solid #e1e5e9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff0000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.brand:hover {
+  color: #cc0000;
+}
+
+.header-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  color: #666;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #333;
+}
+
+.nav-link.active {
+  color: #ff0000;
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ff0000;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.analyze-link {
+  color: #ff0000;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 2px solid #ff0000;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.analyze-link:hover {
+  background: #ff0000;
+  color: white;
+}
+
+.analyze-link.active {
+  background: #ff0000;
+  color: white;
+}
+
+.auth-link {
+  color: #666;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+  color: #333;
+}
+
+.auth-link.signup {
+  background: #ff0000;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.auth-link.signup:hover {
+  background: #cc0000;
+  color: white;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 15px;
+    height: 56px;
+  }
+  
+  .header-left {
+    gap: 20px;
+  }
+  
+  .header-nav {
+    gap: 15px;
+  }
+  
+  .header-right {
+    gap: 10px;
+  }
+  
+  .brand {
+    font-size: 20px;
+  }
+  
+  .nav-link, .auth-link {
+    font-size: 14px;
+  }
+  
+  .analyze-link {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  
+  .auth-link.signup {
+    padding: 6px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-nav {
+    display: none;
+  }
+  
+  .header-right .auth-link:not(.signup) {
+    display: none;
+  }
+}

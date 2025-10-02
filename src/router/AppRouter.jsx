@@ -18,6 +18,9 @@ const Videos = lazy(() => import("@/pages/videos/Videos"));
 const VideoDetail = lazy(() => import("@/pages/videos/VideoDetail"));
 const VideoComments = lazy(() => import("@/pages/videos/VideoComments"));
 
+// Add this new component for the YouTube analyzer
+const YouTubeAnalyzer = lazy(() => import("@/pages/YouTubeAnalyzer"));
+
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-screen">
     <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600"></div>
@@ -25,15 +28,19 @@ const LoadingFallback = () => (
 );
 
 const AppRouter = () => {
-  const { isAuthenticated } = { isAuthenticated: false };
+  const { isAuthenticated } = { isAuthenticated: false }; // Replace with your actual auth logic
 
   return (
     <Suspense fallback={<LoadingFallback />}>
       <Routes>
-        {/* Public Routes */}
+        {/* Public Routes - MyApp Section */}
         <Route path={ROUTES.HOME} element={<Home />} />
         <Route path={ROUTES.ABOUT} element={<About />} />
+        
+        {/* YouTube Analyzer Route (Public) - Add this route */}
+        <Route path="/analyzer" element={<YouTubeAnalyzer />} />
 
+        {/* Auth Routes */}
         <Route
           path={ROUTES.LOGIN}
           element={
@@ -55,22 +62,7 @@ const AppRouter = () => {
           }
         />
 
-        {/* Account Nested Routes */}
-        <Route
-          path={ROUTES.ACCOUNT}
-          element={
-            <ProtectedRoute>
-              <Account />
-            </ProtectedRoute>
-          }
-        >
-          {/* Default redirect to profile */}
-          <Route index element={<Navigate to="profile" replace />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="subscription" element={<Subscription />} />
-        </Route>
-
-        {/* Dashboard Nested Routes */}
+        {/* Protected Dashboard Routes - Completely Separate Section */}
         <Route
           path={ROUTES.DASHBOARD}
           element={
@@ -84,6 +76,20 @@ const AppRouter = () => {
           <Route path="videos" element={<Videos />} />
           <Route path="videos/:id" element={<VideoDetail />} />
           <Route path="videos/:id/comments" element={<VideoComments />} />
+        </Route>
+
+        {/* Account Nested Routes */}
+        <Route
+          path={ROUTES.ACCOUNT}
+          element={
+            <ProtectedRoute>
+              <Account />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to={ROUTES.ACCOUNT_PROFILE} replace />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="subscription" element={<Subscription />} />
         </Route>
 
         {/* Catch-all 404 Route */}

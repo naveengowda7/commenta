@@ -3,6 +3,7 @@ export const ROUTES = {
   ABOUT: '/about',
   LOGIN: '/login',
   SIGNUP: '/signup',
+  ANALYZER: '/analyzer', // Add this
   ACCOUNT: '/account',
   ACCOUNT_PROFILE: '/account/profile',
   ACCOUNT_SUBSCRIPTION: '/account/subscription',
@@ -18,6 +19,7 @@ export const PUBLIC_ROUTES = [
   ROUTES.ABOUT,
   ROUTES.SIGNUP,
   ROUTES.LOGIN,
+  ROUTES.ANALYZER, // Add this
 ]
 
 export const PRIVATE_ROUTES = [

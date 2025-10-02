@@ -5,7 +5,7 @@ import { ROUTES } from "./routes";
 const ProtectedRoute = ({ children }) => {
   const location = useLocation();
   const { isAuthenticated, isLoading } = {
-    isAuthenticated: true,
+    isAuthenticated: false,
     isLoading: false,
   };
 
